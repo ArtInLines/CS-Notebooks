@@ -1,0 +1,29 @@
+\documentclass{article}
+
+\begin{document}
+	
+\section*{Formal Definition}
+
+An \emph{abstract data type} \(\mathcal{D}\) is defined as a 5-tupel: \\
+\(\mathcal{D} = (N, P, Fs, Ts, Ax)\),\\
+where its components are the following:
+
+\begin{enumerate}
+	\item \(N\) is a string. This string is the \emph{name} of the ADT.
+	\item \(P\) is the set of \emph{type parameters}. Here, a type parameter is usually just a string, which denotes a type variable.
+	\item \(Fs\) is the set of \emph{function symbols}. These function symbols denote the operations that are supported by this ADT. The function symbols itself are strings.
+	\item \(Ts\) is a set of \emph{type specifications}. For every function symbol \(f \in Fs\) the set \(Ts\) contains a type specification of the form \\
+	\(f: T_1 \times ... \times T_n \rightarrow S\), \\
+	where \(T_1, ..., T_n, S\) are names of data types. There are three types of these data types:
+		\begin{enumerate}
+			\item Predefined data types like \emph{int} or \emph{str}
+			\item Names of ADTs
+			\item Type parameters from the set \(P\)
+		\end{enumerate}
+	This type specification expresses the fact, that the function \(f\) has to be called as \(f(t_1, ..., t_n)\), where the argument \(t_i\) is of type \(T_i : \forall i \in \{1, ..., n\}\). Further, the result of the function \(f\) has to be of type \(S\). \\
+	Additionally, we must have either \(T_1 = N \lor S = N\), where \(N\) is the name of this ADT. If we have \(T_1 \ne N\), then \(f\) is called a \emph{constructor} of \(\mathcal{D}\). Otherwise, \(f\) is called a \emph{method}. \\
+	Iff \(f\) is a method, we usually write \(N\).\(f(...)\) to denote \(f(N, ...)\)
+	\item \(Ax\) is a set of \emph{axioms} of \(\mathcal{D}\). They are mathematical formulas, that specify the behavior of the ADT.
+\end{enumerate}
+	
+\end{document}

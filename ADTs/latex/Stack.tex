@@ -1,0 +1,49 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{bbold}
+
+\begin{document}
+
+\section*{Idea}
+The Idea behind the ADT of a Stack is to provide a collection of data with two primary operations:
+
+\begin{itemize}
+	\item \emph{push}: Push a new item on top of the stack.
+	\item \emph{pop}: Take the item on top of the stack off.
+\end{itemize}
+
+
+\section*{Definition}
+
+We define the ADT as the following 5-Tuple:
+\[\mathcal{D} = (N, P, Fs, Ts, Ax),\]
+where the components are defined as follows:
+
+\begin{enumerate}
+ \item \(N :=\) Stack
+ \item \(P := \{ \text{Element} \}\)
+ \item \(Fs := \{ \text{stack, push, pop, top, isEmpty} \}\)
+ \item \(Ts\) is the set containing the following type specifications:
+	\begin{enumerate}
+		\item \( \text{stack} : \text{Stack} \)
+		\item push : Stack \(\times\) Element \(\rightarrow\) Stack
+		\item pop : Stack \(\rightarrow\) Stack \(\cup \{\Omega\}\)
+		\item top : Stack \(\rightarrow\) Stack\(\cup \{\Omega\}\)
+		\item isEmpty : Stack \(\rightarrow \mathbb{B}\)
+	\end{enumerate}
+ \item \(Ax\) is the set containing the following axioms:
+	\begin{enumerate}
+		\item stack().top() = \(\Omega\)
+  \item stack().pop() = \(\Omega\)
+  \item \(S\).push(\(x\)).top() = \(x\)
+  \item \(S\).push(\(x\)).pop() = \(S\)
+  \item \(S\).top() = \(\Omega \iff\) S.isEmpty = true
+	\end{enumerate}
+\end{enumerate}
+
+
+\section*{Implementation}
+TBD
+
+\end{document}
