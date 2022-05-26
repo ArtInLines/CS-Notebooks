@@ -1,17 +1,20 @@
 \documentclass{article}
 
+\usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{bbold}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+
+% pparagraph is for Paragraph headings in Proofs or similar sections
+\newcommand{\pparagraph}[1]{\textbf{\underline{#1}}}
 
 \begin{document}
 
 \section*{Idea}
-The Idea behind the ADT of a Queue is to provide a collection of data with two primary operations:
-
-\begin{itemize}
-	\item \emph{push}: Push a new item on top of the Queue.
-	\item \emph{pop}: Take the item on top of the Queue off.
-\end{itemize}
+The Queue ADT follows the "First-In, First-Out" Principle, which means the element that was first added is also first removed again. It has similar methods to the Stack, with a different removing-function.
 
 
 \section*{Definition}
@@ -46,6 +49,67 @@ where the components are defined as follows:
   \item \(Q\).length() \(= 0 \rightarrow Q\).enqueue(\(x\)).peek() = \(x\)
 	\end{enumerate}
 \end{enumerate}
+
+
+\section*{Theorems}
+In this section, the definition from above is used to prove useful theorems about the Queue ADT.
+
+\begin{corollary} \label{theorem_length_equiv_enqueue_amount}
+	\(Q\).length() is equals to the amount of function calls of "enqueue" minus the amount of function calls of "dequeue"
+\end{corollary}
+
+\begin{theorem}
+	Dequeuing an element from a Queue \(Q\) removes the element obtained through \(Q\).peek().
+\end{theorem}
+\begin{proof}
+	Let \(x = Q\).peek() and \(x \in\) Element. Note, that this means, that \(Q\).length() \(> 0\), since \(x\) would not be an Element otherwise. \\
+	We will prove the theorem via induction over \(n\), where \(n = Q\).length() now:
+	
+	\pparagraph{Base Case:} \(n = 1\)
+	\begin{align*}
+		Q_1 &= queue().enqueue(x) &| \text{ Corollary \ref{theorem_length_equiv_enqueue_amount}} \\
+		Q_1.peek() &= queue().enqueue(x).peek() \\
+		Q_1.peek() &= x
+	\end{align*}
+	
+	\pparagraph{Induction Step:} \(n \rightarrow n+1\)
+	\begin{align*}
+		Q_{n+1} &= Q_n.enqueue(y) \\
+		Q_{n+1} &= queue().enqueue(x_1)....enqueue(x_n).enqueue(y) \\
+		&| \text{ Corollary \ref{theorem_length_equiv_enqueue_amount}} \\
+		Q_{n+1}.peek() &= queue().enqueue(x_1)....enqueue(x_n).enqueue(y).peek() \\
+		Q_{n+1}.peek() &= queue().enqueue(x_1)....enqueue(x_n).peek() \\
+		&| \text{ Axiom (h)} \\
+		Q_{n+1}.peek() &= queue().enqueue(x_1).peek() \\
+		&| \text{ Axiom (h) applied n-1 times} \\
+		Q_{n+1}.peek() &= x_1 \\
+		&| \text{ Axiom (i)} \\
+		Q_{n+1}.peek() &= queue().enqueue(x_1).peek() \\
+		Q_{n+1}.peek() &= Q_1.peek()
+	\end{align*}
+\end{proof}
+	
+	
+\begin{theorem}
+	Queues follow the "First-In, First-Out"-Principle. That means, that the 1st,2nd,...,\(n\)th element to enqueued is also going to be the 1st,2nd,...,\(n\)th element to be dequeued.
+\end{theorem}
+\begin{proof}
+	Let \(Q_n\) be a Queue, such that \(Q\).length() \(= n\). It follows then from Corollary \ref{theorem_length_equiv_enqueue_amount}, that
+	\[Q_n = queue().enqueue(x_1)....enqueue(x_n)\]
+	holds. Further, we know from Axiom (e), that the following holds for all \(n > 0\):
+	\begin{align*}
+		Q_n.dequeue() &= queue().enqueue(x_1).enqueue(x_2)....enqueue(x_n).dequeue() \\
+		&= queue().enqueue(x_1).enqueue(x_2)....dequeue().enqueue(x_n) \\
+		&= queue().enqueue(x_1).enqueue(x_2).dequeue()....enqueue(x_n) \\
+		&= queue().enqueue(x_1).dequeue().enqueue(x_2)....enqueue(x_n)
+	\end{align*}
+	From Axiom (f), that the above is equivalent with the following:
+	\begin{align*}
+		Q_n.dequeue() &= queue().enqueue(x_2)....enqueue(x_n)
+	\end{align*}
+	It can easily be proved (per induction for example), that by repeating the same steps \(n\) times this holds for all elements aside from \(x_1\) as well, yet that proof is left out here for brevity.
+\end{proof}
+	
 
 
 \section*{Implementation}
