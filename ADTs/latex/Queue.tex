@@ -1,0 +1,54 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{bbold}
+
+\begin{document}
+
+\section*{Idea}
+The Idea behind the ADT of a Queue is to provide a collection of data with two primary operations:
+
+\begin{itemize}
+	\item \emph{push}: Push a new item on top of the Queue.
+	\item \emph{pop}: Take the item on top of the Queue off.
+\end{itemize}
+
+
+\section*{Definition}
+
+We define the ADT as the following 5-Tuple:
+\[\mathcal{D} = (N, P, Fs, Ts, Ax),\]
+where the components are defined as follows:
+
+\begin{enumerate}
+ \item \(N :=\) Queue
+ \item \(P := \{ \text{Element} \}\)
+ \item \(Fs := \{ \text{queue, enqueue, dequeue, peek, length} \}\)
+ \item \(Ts\) is the set containing the following type specifications:
+	\begin{enumerate}
+		\item \( \text{queue} : \text{Queue} \)
+  		\item length : Queue \(\rightarrow \mathbb{N_0}\)
+		\item enqueue : Queue \(\times\) Element \(\rightarrow\) Queue
+		\item dequeue : Queue \(\rightarrow\) Queue \(\cup\) \(\{\Omega\}\)
+		\item peek : Queue \(\rightarrow\) Element \(\cup\) \(\{\Omega\}\)
+	\end{enumerate}
+ \item \(Ax\) is the set containing the following axioms. \\
+	\(\forall Q \in \text{Queue} : x,y \in \text{Element} :\)
+	\begin{enumerate}
+  \item queue().peek() = \(\Omega\)
+  \item queue().length() = 0
+  \item \(Q\).enqueue(\(x\)).length() = \(Q\).length() + 1
+  \item \(Q\).length() \(>\) 0 \(\rightarrow\) \(Q\).dequeue().length() = \(Q\).length() - 1
+  \item \(Q\).length() \(> 0 \rightarrow Q\).enqueue(\(x\)).dequeue() = \(Q\).dequeue().enqueue(\(x\))
+  \item queue().enqueue(\(x\)).dequeue() = queue()
+  \item queue().dequeue() = \(\Omega\)
+  \item \(Q\).length() \(> 0 \rightarrow Q\).enqueue(\(x\)).peek() = \(Q\).peek()
+  \item \(Q\).length() \(= 0 \rightarrow Q\).enqueue(\(x\)).peek() = \(x\)
+	\end{enumerate}
+\end{enumerate}
+
+
+\section*{Implementation}
+TBD
+
+\end{document}
