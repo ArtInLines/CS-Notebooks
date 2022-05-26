@@ -17,12 +17,11 @@ where the components are defined as follows:
 \begin{enumerate}
  \item \(N :=\) List
  \item \(P := \{ \text{Element} \}\)
- \item \(Fs := \{ \text{list, length, isEmpty, get, set, insert, remove} \}\)
+ \item \(Fs := \{ \text{list, length, get, set, insert, remove} \}\)
  \item \(Ts\) is the set containing the following type specifications:
 	\begin{enumerate}
 		\item \( \text{list} : \text{List} \)
 		\item length : List \(\rightarrow \mathbb{N_0}\)
-		\item isEmpty : List \(\rightarrow \mathbb{B}\)
 		\item get : List \(\times \mathbb{N_0}\) \(\rightarrow\) Element \(\cup \{\Omega\}\)
 		\item set : List \(\times\) Element \(\times \mathbb{N_0}\) \(\rightarrow\) List \(\cup \{\Omega\}\)
 		\item insert : List \(\times\) Element \(\times \mathbb{N_0}\) \(\rightarrow\) List
@@ -32,15 +31,14 @@ where the components are defined as follows:
 	\(\forall L \in \text{List} : x \in \text{Element} : i \in \mathbb{N_0} :\)
 	\begin{enumerate}
 		\item list().length() = 0
-  \item list().isEmpty() \(\iff\) list().length() = 0
-  \item L.length() \(> i \rightarrow\) L.set(\(i, x\)).get(\(i\)) = \(x\)
-  \item L.length() \(\geq i \rightarrow\) L.insert(\(i, x\)).length() = L.length() + 1
-  \item L.length() \(\geq i \rightarrow\) L.insert(\(i, x\)).get(\(i\)) = \(x\)
-  \item L.length() \(\geq i \rightarrow\) L.insert(\(i, x\)).remove(\(i\)) = L
-  \item L.length() \(\leq i \rightarrow\) L.get(\(i\)) = \(\Omega\)
-  \item L.length() \(\leq i \rightarrow\) L.set(\(i, x\)) = \(\Omega\)
-  \item L.length() \(< i \rightarrow\) L.insert(\(i, x\)) = \(\Omega\)
-  \item L.length() \(< i \rightarrow\) L.remove(\(i\)) = \(\Omega\)
+		\item L.length() \(> i \rightarrow\) L.set(\(i, x\)).get(\(i\)) = \(x\)
+		\item L.length() \(\geq i \rightarrow\) L.insert(\(i, x\)).length() = L.length() + 1
+		\item L.length() \(\geq i \rightarrow\) L.insert(\(i, x\)).get(\(i\)) = \(x\)
+		\item L.length() \(\geq i \rightarrow\) L.insert(\(i, x\)).remove(\(i\)) = L
+		\item L.length() \(\leq i \rightarrow\) L.get(\(i\)) = \(\Omega\)
+		\item L.length() \(\leq i \rightarrow\) L.set(\(i, x\)) = \(\Omega\)
+		\item L.length() \(< i \rightarrow\) L.insert(\(i, x\)) = \(\Omega\)
+		\item L.length() \(< i \rightarrow\) L.remove(\(i\)) = \(\Omega\)
 	\end{enumerate}
 \end{enumerate}
 
