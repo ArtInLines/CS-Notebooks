@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{bbold}
+
+\begin{document}
+
+\section*{Idea}
+The idea is to map specific keys to values. A map must thus be able to retrieve the value associated with some key, insert/overwrite the value associated with some key and delete keys.
+
+There are several abstract data types that implement this ADT with further specifications.
+
+\section*{Definition}
+We define the ADT as the following 5-Tuple:
+\[\mathcal{D} = (N, P, Fs, Ts, Ax),\]
+where the components are defined as follows:
+
+\begin{enumerate}
+ \item \(N :=\) Map
+ \item \(P := \{ \text{Key, Value} \}\)
+ \item \(Fs := \{ \text{map, find, insert, delete} \}\)
+ \item \(Ts\) is the set containing the following type specifications:
+	\begin{enumerate}
+		\item \( \text{map} : \text{Map} \)
+		\item find : Map \(\times\) Key \(\rightarrow\) Value \(\cup \{\Omega\}\)
+		\item insert : Map \(\times\) Key \(\times\) Value \(\rightarrow\) Map \(\cup \{\Omega\}\)
+		\item find : Map \(\times\) Key \(\rightarrow\) Map
+	\end{enumerate}
+ \item \(Ax\) is the set containing the following axioms. \\
+	\(\forall L \in \text{List} : x \in \text{Element} : i \in \mathbb{N_0} :\)
+	\begin{enumerate}
+		\item map().find(\(k\)) = \(\Omega\)
+  \item \(m\).insert(\(k, v\)).find(\(k\)) = v
+  \item \(k_1 \ne k_2 \rightarrow\) \(m\).insert(\(k_1, v\)).find(\(k_2\)) = \(m\).find(\(k_2\))
+  \item \(m\).delete(\(k\)).find(\(k\)) = \(\Omega\)
+  \item \(k_1 \ne k_2 \rightarrow m\).delete(\(k_1\)).find(\(k_2\)) = \(m\).find(\(k_2\))
+	\end{enumerate}
+\end{enumerate}
+
+
+\section*{Implementation}
+TBD
+
+
+\end{document}
