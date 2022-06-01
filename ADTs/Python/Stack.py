@@ -1,27 +1,27 @@
 class Stack:
 	def __init__(self):
-		self.mElements = []
+		self._elements = []
 	
 	def push(self, element):
-		self.mElements.append(element)
+		self._elements.append(element)
 		return self
 	
 	def pop(self):
 		if self.isEmpty():
 			return None
-		self.mElements.pop(-1)
+		self._elements.pop(-1)
 		return self
 	
 	def top(self):
 		if self.isEmpty():
 			return None
-		return self.mElements[-1]
+		return self._elements[-1]
 	
 	def isEmpty(self):
-		return self.mElements == []
+		return self._elements == []
 	
 	def copy(self):
-		return Stack.createStack(self.mElements)
+		return Stack.createStack(self._elements)
 	
 	def __str__(self):
 		C = self.copy()

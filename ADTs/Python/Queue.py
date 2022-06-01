@@ -1,36 +1,36 @@
 class Queue:
 	def __init__(self):
-		self.mElements = []
+		self._elements = []
 	
 	def __sizeof__(self):
-		return len(self.mElements)
+		return len(self._elements)
 	
 	def isEmpty(self):
-		return self.mElements == []
+		return self._elements == []
 	
 	def enqueue(self, el):
-		self.mElements.append(el)
+		self._elements.append(el)
 		return self
 	
 	def dequeue(self):
 		if self.isEmpty():
 			return None
-		self.mElements.pop(0)
+		self._elements.pop(0)
 		return self
 	
 	def peek(self):
 		if self.isEmpty():
 			return None
-		return self.mElements[0]
+		return self._elements[0]
 	
 	def __str__(self):
-		return self.mElements.__str__
+		return self._elements.__str__
 	
 	def copy(self):
-		return Queue.create(self.mElements)
+		return Queue.create(self._elements)
 	
 	@staticmethod
 	def create(elements):
 		C = Queue()
-		C.mElements = elements
+		C._elements = elements
 		return C

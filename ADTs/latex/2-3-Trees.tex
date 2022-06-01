@@ -1,0 +1,56 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{bbold}
+
+\begin{document}
+
+\section*{Idea}
+...
+
+\section*{Definition}
+We define \(T\), the set of 2-3-Trees, inductively:
+
+\begin{enumerate}
+	\item \(Nil \in T\)
+ \item \(Two(l, k, r) \in T\) if and only if:
+	\begin{enumerate}
+		\item \(l, r \in T\)
+  		\item \(k \in Keys\)
+    \item \(l < k < r\)
+    \item \(l.height() = m.height()\)
+	\end{enumerate}
+ \item \(Three(l, k_1, m, k_2, r) \in T\) if and only if:
+	\begin{enumerate}
+		\item \(l, m, r \in T\)
+		\item \(k_1, k_2 \in Keys\)
+  \item \(l < k_1 < m < k_2 < r\)
+  \item \(l.height() = m.height() = r.height()\)
+	\end{enumerate}
+\end{enumerate}
+
+There are also 4-Nodes:
+\[Four(l, k_l, m_l, k_m, m_r, k_r, r)\]
+is a 4-Node iff:
+\begin{enumerate}
+	\item \(l, m_l, m_r, r \in T\)
+ \item \(k_l, k_m, k_r \in Keys\)
+ \item \(l < k_l < m_l < k_m < m_r < k_r < r\)
+ \item \(l.height() = m_l.height() = m_r.height() = r.height()\)
+\end{enumerate}
+
+
+We define \(insert: T \times Keys \rightarrow T\) using 3 auxilliary methods:
+\begin{enumerate}
+	\item \(ins: T \times Keys \rightarrow T^*\)
+		\(t.ins(k)\) may not contain more than one 4-Node, which has to be directly below the root-node - or if \(t\) consists of only one node, then the 4-node may be at the root too.
+ \item \(restore: T^* \rightarrow T^*\)
+		\(restore\) moves the 4-node up to the root.
+ \item \(grow: T^* \rightarrow T\)
+\end{enumerate}
+
+\section*{Implementation}
+TBD
+
+
+\end{document}
