@@ -23,8 +23,48 @@ class Queue:
 			return None
 		return self._elements[0]
 	
+	def __repr__(self):
+		return self._elements.__repr__()
+		
 	def __str__(self):
-		return self._elements.__str__
+		return self._elements.__str__()
+	
+	def __add__(self, __o):
+		c = self.copy()
+		if isinstance(__o, Queue):
+			o = __o.copy()
+			while not o.isEmpty():
+				c.enqueue(o.peek())
+				o.dequeue()
+		elif isinstance(__o, list):
+			for x in __o:
+				c.enqueue(x)
+		else:
+			c.enqueue(__o)
+		return c
+	
+	def __iadd__(self, __o):
+		if isinstance(__o, Queue):
+			o = __o.copy()
+			while not o.isEmpty():
+				self.enqueue(o.peek())
+				o.dequeue()
+		elif isinstance(__o, list):
+			for x in __o:
+				self.enqueue(x)
+		else:
+			self.enqueue(__o)
+		return self
+	
+	def __iter__(self):
+		return self.copy()
+	
+	def __next__(self):
+		if self.isEmpty():
+			raise StopIteration
+		x = self.peek()
+		self.dequeue()
+		return x
 	
 	def copy(self):
 		return Queue.create(self._elements)
@@ -32,5 +72,5 @@ class Queue:
 	@staticmethod
 	def create(elements):
 		C = Queue()
-		C._elements = elements
+		C._elements = elements.copy()
 		return C

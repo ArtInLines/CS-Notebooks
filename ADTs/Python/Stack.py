@@ -20,10 +20,13 @@ class Stack:
 	def isEmpty(self):
 		return self._elements == []
 	
+	def __sizeof__(self):
+		return len(self._elements)
+	
 	def copy(self):
 		return Stack.createStack(self._elements)
 	
-	def __str__(self):
+	def __repr__(self):
 		C = self.copy()
 		result = C._convert()
 		return result
@@ -34,6 +37,16 @@ class Stack:
 		t = self.top()
 		self.pop()
 		return self._convert() + ' ' + str(t) + ' |'
+	
+	def __iter__(self):
+		return self.copy()
+	
+	def __next__(self):
+		if self.isEmpty():
+			raise StopIteration
+		x = self.top()
+		self.pop()
+		return x
 	
 	@staticmethod
 	def createStack(elements):
