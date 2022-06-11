@@ -2,7 +2,7 @@ class Queue:
 	def __init__(self):
 		self._elements = []
 	
-	def __sizeof__(self):
+	def __len__(self):
 		return len(self._elements)
 	
 	def isEmpty(self):
@@ -65,6 +65,9 @@ class Queue:
 		x = self.peek()
 		self.dequeue()
 		return x
+	
+	def toList(self):
+		return self._elements.copy()
 	
 	def copy(self):
 		return Queue.create(self._elements)

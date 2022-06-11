@@ -20,7 +20,7 @@ class Stack:
 	def isEmpty(self):
 		return self._elements == []
 	
-	def __sizeof__(self):
+	def __len__(self):
 		return len(self._elements)
 	
 	def copy(self):
@@ -47,6 +47,9 @@ class Stack:
 		x = self.top()
 		self.pop()
 		return x
+	
+	def toList(self):
+		return self._elements.copy()
 	
 	@staticmethod
 	def createStack(elements):

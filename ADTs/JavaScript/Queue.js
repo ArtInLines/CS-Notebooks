@@ -4,7 +4,7 @@ export default class Queue {
 		this.#elements = elements;
 	}
 
-	length() {
+	get length() {
 		return this.#elements.length;
 	}
 
@@ -18,17 +18,23 @@ export default class Queue {
 	}
 
 	dequeue() {
-		this.#elements.shift(el);
+		if (this.isEmpty()) return null;
+		this.#elements.shift();
 		return this;
 	}
 
 	peek() {
+		if (this.isEmpty()) return null;
 		return this.#elements[0];
 	}
 
 	toString() {
 		if (this.isEmpty()) return '|';
 		return '[ ' + this.#elements.join(' | ') + ' ]';
+	}
+
+	toList() {
+		return [...this.#elements];
 	}
 
 	copy() {

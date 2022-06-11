@@ -16,9 +16,11 @@ for i in range(100):
 	assert not S.isEmpty()
 	L.append(x)
 
-print(S)
-print(L)
+# print(S)
+# print(L)
 
 for i in range(len(L)-1, -1, -1):
 	assert L[i] == S.top()
 	S.pop()
+
+print('Test successful')

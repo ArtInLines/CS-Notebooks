@@ -10,13 +10,13 @@ export default class Stack {
 	}
 
 	pop() {
-		if (this.isEmpty()) return undefined;
+		if (this.isEmpty()) return null;
 		this.#elements.pop();
 		return this;
 	}
 
 	top() {
-		if (this.isEmpty()) return undefined;
+		if (this.isEmpty()) return null;
 		return this.#elements[this.#elements.length - 1];
 	}
 
@@ -31,5 +31,9 @@ export default class Stack {
 	toString() {
 		if (this.isEmpty()) return '|';
 		return '| ' + this.#elements.join(' | ') + ' |';
+	}
+
+	toList() {
+		return [...this.#elements];
 	}
 }
