@@ -1,4 +1,4 @@
 typedef struct item {
-	element *el;
-	element* next_item;
+	element* el;
+	struct item* next_item;
 } item;

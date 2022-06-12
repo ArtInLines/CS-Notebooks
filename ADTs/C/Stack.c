@@ -9,6 +9,11 @@ Stack* stack_new() {
 	return S;
 }
 
+// TODO:
+Stack* stack_free() {
+	
+}
+
 bool stack_isEmpty(Stack* S) {
 	return S->top == NULL;
 }
@@ -57,7 +62,7 @@ element_list stack_toList(Stack *S) {
 
 Stack* stack_create(element* L, unsigned int length) {
 	Stack* S = stack_new();
-	for (unsigned int i = 0; i < length; i++) stack_push(S, L[i]);
+	for (unsigned int i = 0; i < length; i++) stack_push(S, &L[i]);
 	return S;
 }
 
