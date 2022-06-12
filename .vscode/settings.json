@@ -26,5 +26,12 @@
 		"*.synctex.gz(busy)",
 		"*.nav",
 		"*.vrb"
-	]
+	],
+	"files.associations": {
+		"*.pl": "prolog",
+		"*.rb": "ruby",
+		"stdlib.h": "c",
+		"queue.h": "c",
+		"element.h": "c"
+	}
 }

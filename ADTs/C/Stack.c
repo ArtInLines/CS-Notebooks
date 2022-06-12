@@ -1,13 +1,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
-#include "element.h"
-#include "item.h"
-
-
-typedef struct Stack {
-	item* top;
-} Stack;
-
+#include "Stack.h"
 
 
 Stack* stack_new() {

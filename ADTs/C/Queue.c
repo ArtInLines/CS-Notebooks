@@ -1,13 +1,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
-#include "element.h"
-#include "item.h"
-
-
-typedef struct Queue {
-	item* start;
-	item* end;
-} Queue;
+#include "Queue.h"
 
 
 Queue* queue_new() {
