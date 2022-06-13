@@ -32,6 +32,8 @@
 		"*.rb": "ruby",
 		"stdlib.h": "c",
 		"queue.h": "c",
-		"element.h": "c"
+		"element.h": "c",
+		"stack.h": "c",
+		"item.h": "c"
 	}
 }
